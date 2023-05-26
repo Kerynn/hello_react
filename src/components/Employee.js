@@ -7,10 +7,10 @@ function Employee(props){
         />
         <div className="text-center space-y-2 sm:text-left">
           <div className="space-y-0.5">
-            <p className="text-lg text-black font-semibold">{props.name}</p>
-            <p className="text-slate-500 font-medium">{props.role}</p>
+            <p className="text-lg font-semibold text-black">{props.name}</p>
+            <p className="text-slate-600 font-medium">{props.role}</p>
           </div>
-          <button className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
+          <button className="px-4 py-1 text-sm text-blue-800 font-semibold rounded-full border border-blue-900 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
             Update Employee Info
           </button>
         </div>
