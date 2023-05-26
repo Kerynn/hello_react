@@ -44,7 +44,7 @@ function App() {
     ]);
   const showEmployees = true;
   return (
-    <div className="App">
+    <div className="App bg-blue-200">
       { console.log('inside the return') }
       { showEmployees ? (
         <>
