@@ -61,6 +61,16 @@ function App() {
     setEmployees(updatedEmployees)
   }
 
+  function newEmployee(name, role, img){
+    const newEmployee = {
+      id: uuidv4(),
+      name: name,
+      role: role,
+      img: img
+    }
+    setEmployees([...employees, newEmployee])
+  }
+
   const showEmployees = true;
   return (
     <div className="App bg-blue-200">
@@ -89,7 +99,7 @@ function App() {
               );
             })}
           </div>
-          <AddEmployee />
+          <AddEmployee newEmployee={newEmployee}/>
         </>
       ) : (
         <p>You cannot see the employees</p>
