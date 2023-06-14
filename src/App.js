@@ -75,17 +75,12 @@ function App() {
 
   const showEmployees = true;
   return (
-    <div className="App bg-blue-200">
+    <div className="App bg-blue-100 min-h-screen">
       <Header />
       { console.log('inside the return') }
       { showEmployees ? (
         <>
-          <input 
-            type="text" 
-            onChange={(e) => {
-              setRole(e.target.value)
-            }}
-          />
+        
           <div className="flex flex-wrap justify-center">
             {employees.map((employee) => {
               console.log(employee);
