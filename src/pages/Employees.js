@@ -76,7 +76,6 @@ function Employees() {
   const showEmployees = true;
   return (
     <div className="App bg-blue-100 min-h-screen">
-      <Header />
       { console.log('inside the return') }
       { showEmployees ? (
         <>
