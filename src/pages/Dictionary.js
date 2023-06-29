@@ -6,20 +6,18 @@ export default function Dictionary(){
   const navigate = useNavigate();
 
   return (
-    <>
+    <form onSubmit={() => {
+      navigate('/definition/' + word)
+    }}>
       <input 
         type="text" 
         onChange={(e) => {
           setWord(e.target.value);
         }} 
       />
-      <button 
-        onClick={() => {
-          navigate('/definition/' + word, {replace: true});
-        }}
-      >
+      <button>
         Search
       </button>
-    </>
+    </form>
   );
 } 
