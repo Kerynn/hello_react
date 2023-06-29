@@ -6,16 +6,20 @@ export default function Dictionary(){
   const navigate = useNavigate();
 
   return (
-    <form onSubmit={() => {
+    <form 
+      className="flex justify-center space-x-2 max-w-[300px]"
+      onSubmit={() => {
       navigate('/definition/' + word)
     }}>
-      <input 
+      <input
+        className="shrink min-w-0 border border-gray-300 rounded-md p-1"
+        placeholder="Word to Search" 
         type="text" 
         onChange={(e) => {
           setWord(e.target.value);
         }} 
       />
-      <button>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
         Search
       </button>
     </form>
