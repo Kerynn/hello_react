@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 export default function Customer(){
@@ -23,6 +23,7 @@ export default function Customer(){
           <p>{customer.industry}</p>
         </div> 
       ) : null }
+      <Link to="/customers">Back to Customers List</Link>
     </>
   );
 }
