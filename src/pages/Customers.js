@@ -13,6 +13,28 @@ export default function Customers(){
         setCustomers(data.customers);
       });
   }, []);
+
+  function newCustomer(name, industry){
+    const data = {name: name, industry: industry};
+    const url = baseUrl + 'api/customers/';
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then((response) => {
+      if(!response.ok){
+        throw new Error('Something went wrong');
+      }
+      return response.json();
+    }).then((data) => {
+
+    }).catch((e) => {
+      console.log(e);
+    });
+  }
+
   return (
     <>
       <h1>Customers:</h1>
@@ -27,7 +49,7 @@ export default function Customers(){
           }) 
         : null }
       </ul>
-      <AddCustomer />
+      <AddCustomer newCustomer={newCustomer}/>
     </>
   );
 }
