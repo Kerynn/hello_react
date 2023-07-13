@@ -4,8 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 
 export default function AddCustomer(props) {
   const [name, setName] = useState('');
-  const [role, setRole] = useState('');
-  const [img, setImg] = useState('');
+  const [industry, setIndustry] = useState('');
 
   const [show, setShow] = useState(false);
 
@@ -36,9 +35,8 @@ export default function AddCustomer(props) {
             onSubmit={(e) => {
               e.preventDefault();
               setName('');
-              setRole('');
-              setImg('');
-              props.newEmployee(name, role, img);
+              setIndustry('');
+              props.newCustomer(name, industry);
             }}
             id='editmodal' 
             className="w-full max-w-sm">
@@ -47,14 +45,14 @@ export default function AddCustomer(props) {
                 <label 
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" 
                   for="name">
-                  Customer Name
+                  Name
                 </label>
               </div>
               <div className="md:w-2/3">
                 <input 
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                   id="name"
-                  placeholder="John Johnson"
+                  placeholder="Google"
                   type="text" 
                   value={name}
                   onChange={(e) => {setName(e.target.value)}}
@@ -74,10 +72,10 @@ export default function AddCustomer(props) {
                 <input 
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                   id="industry" 
-                  placeholder="Dev"
+                  placeholder="Computing"
                   type="text"
-                  value={role}
-                  onChange={(e) => {setRole(e.target.value)}}
+                  value={industry}
+                  onChange={(e) => {setIndustry(e.target.value)}}
                 />
               </div>
             </div>
