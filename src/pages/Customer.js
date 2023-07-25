@@ -8,6 +8,12 @@ export default function Customer(){
   const [customer, setCustomer] = useState();
   const [tempCustomer, setTempCustomer] = useState();
   const [notFound, setNotFound] = useState();
+
+  useEffect(() => {
+    console.log('customer', customer)
+    console.log('temp customer', tempCustomer)
+  })
+
   useEffect(() => {
     const url = baseUrl + 'api/customers/' + id;
     fetch(url)
@@ -31,9 +37,28 @@ export default function Customer(){
       { notFound ? <p>The customer with id {id} you are looking for was not found</p> : null }
       { customer ? (
         <div>
-          <input class="m-2 block px-2" type="text" value={tempCustomer.id} />
-          <input class="m-2 block px-2" type="text" value={tempCustomer.name} />
-          <input class="m-2 block px-2" type="text" value={tempCustomer.industry} />
+          <input 
+            class="m-2 block px-2" 
+            type="text" 
+            value={tempCustomer.name}
+            onChange={(e) => {
+              setTempCustomer({
+                ...tempCustomer, 
+                name: e.target.value
+              });
+            }}
+          />
+          <input 
+            class="m-2 block px-2" 
+            type="text" 
+            value={tempCustomer.industry}
+            onChange={(e) => {
+              setTempCustomer({
+                ...tempCustomer, 
+                industry: e.target.value
+              });
+            }}
+          />
         </div> 
       ) : null }
       <button 
