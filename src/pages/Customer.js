@@ -29,9 +29,9 @@ export default function Customer(){
       { notFound ? <p>The customer with id {id} you are looking for was not found</p> : null }
       { customer ? (
         <div>
-          <p>{customer.id}</p>
-          <p>{customer.name}</p>
-          <p>{customer.industry}</p>
+          <input class="m-2 block px-2" type="text" value={customer.id} />
+          <input class="m-2 block px-2" type="text" value={customer.name} />
+          <input class="m-2 block px-2" type="text" value={customer.industry} />
         </div> 
       ) : null }
       <button 
