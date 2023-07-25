@@ -11,9 +11,9 @@ export default function Customer(){
   const [changed, setChanged] = useState(false);
 
   useEffect(() => {
-    console.log('customer', customer)
-    console.log('temp customer', tempCustomer)
-    console.log('changed', changed)
+    // console.log('customer', customer)
+    // console.log('temp customer', tempCustomer)
+    // console.log('changed', changed)
   })
 
   useEffect(() => {
@@ -34,6 +34,27 @@ export default function Customer(){
   function deleteCustomer(){
     console.log('deleting...')
   }
+
+  function updateCustomer(){
+    const url = baseUrl + 'api/customers/' + id;
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(tempCustomer)
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      setCustomer(data.customer);
+      setChanged(false);
+      console.log(data);
+    })
+    .catch();
+  }
+
   return (
     <>
       { notFound ? <p>The customer with id {id} you are looking for was not found</p> : null }
@@ -70,8 +91,8 @@ export default function Customer(){
                 setChanged(false);
               }}>
                 Cancel
-              </button>{' '}
-              <button>Save</button> 
+              </button>
+              <button onClick={updateCustomer}>Save</button> 
             </>
             ) : null
           }
