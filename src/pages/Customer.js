@@ -12,7 +12,7 @@ export default function Customer(){
 
   useEffect(() => {
     if (!customer) return;
-    if (!customer) return;
+    if (!tempCustomer) return;
 
     let equal = true;
     if (customer.name !== tempCustomer.name) equal = false;
