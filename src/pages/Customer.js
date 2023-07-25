@@ -8,10 +8,12 @@ export default function Customer(){
   const [customer, setCustomer] = useState();
   const [tempCustomer, setTempCustomer] = useState();
   const [notFound, setNotFound] = useState();
+  const [changed, setChanged] = useState(false);
 
   useEffect(() => {
     console.log('customer', customer)
     console.log('temp customer', tempCustomer)
+    console.log('changed', changed)
   })
 
   useEffect(() => {
@@ -42,6 +44,7 @@ export default function Customer(){
             type="text" 
             value={tempCustomer.name}
             onChange={(e) => {
+              setChanged(true);
               setTempCustomer({
                 ...tempCustomer, 
                 name: e.target.value
@@ -53,12 +56,25 @@ export default function Customer(){
             type="text" 
             value={tempCustomer.industry}
             onChange={(e) => {
+              setChanged(true);
               setTempCustomer({
                 ...tempCustomer, 
                 industry: e.target.value
               });
             }}
           />
+          {changed ? (
+            <>
+              <button onClick={(e) => {
+                setTempCustomer({...customer});
+                setChanged(false);
+              }}>
+                Cancel
+              </button>{' '}
+              <button>Save</button> 
+            </>
+            ) : null
+          }
         </div> 
       ) : null }
       <button 
