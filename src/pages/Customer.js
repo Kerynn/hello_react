@@ -28,11 +28,19 @@ export default function Customer(){
         if(response.status === 404){
           setNotFound(true);
         }
+        if(!response.ok) {
+          console.log('response', response);
+          throw new Error('something went wrong, try again later');
+        }
         return response.json();
       })
       .then((data) => {
         setCustomer(data.customer);
         setTempCustomer(data.customer);
+        setError(undefined);
+      })
+      .catch((e) => {
+        setError(e.message);
       });
   }, []);
 
@@ -136,9 +144,9 @@ export default function Customer(){
           >
             Delete
           </button>
-          {error ? <p>{error}</p> : null}
         </div> 
       ) : null }
+      {error ? <p>{error}</p> : null}
       <br />
       <Link to="/customers">Back to Customers List</Link>
     </>
