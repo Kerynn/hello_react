@@ -134,6 +134,7 @@ export default function Customer(){
                 }
                 navigate('/customers');
               }).catch((e) => {
+                setError(e.message)
               });
             }}
           >
