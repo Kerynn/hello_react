@@ -29,7 +29,6 @@ export default function Customer(){
           setNotFound(true);
         }
         if(!response.ok) {
-          console.log('response', response);
           throw new Error('something went wrong, try again later');
         }
         return response.json();
@@ -58,18 +57,15 @@ export default function Customer(){
       body: JSON.stringify(tempCustomer)
     })
     .then((response) => {
-      console.log('response', response);
       if (!response.ok) throw new Error('something went wrong');
       return response.json();
     })
     .then((data) => {
       setCustomer(data.customer);
       setChanged(false);
-      console.log(data);
       setError(undefined);
     })
     .catch((e) => {
-      console.log('e', e);
       setError(e.message); 
     });
   }
@@ -138,7 +134,6 @@ export default function Customer(){
                 }
                 navigate('/customers');
               }).catch((e) => {
-                  console.log(e);
               });
             }}
           >
