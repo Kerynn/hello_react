@@ -9,6 +9,7 @@ export default function Customer(){
   const [tempCustomer, setTempCustomer] = useState();
   const [notFound, setNotFound] = useState();
   const [changed, setChanged] = useState(false);
+  const [error, setError] = useState();
 
   useEffect(() => {
     if (!customer) return;
@@ -49,6 +50,8 @@ export default function Customer(){
       body: JSON.stringify(tempCustomer)
     })
     .then((response) => {
+      console.log('response', response);
+      if (!response.ok) throw new Error('something went wrong');
       return response.json();
     })
     .then((data) => {
@@ -56,7 +59,10 @@ export default function Customer(){
       setChanged(false);
       console.log(data);
     })
-    .catch();
+    .catch((e) => {
+      console.log('e', e);
+      setError(e); 
+    });
   }
 
   return (
