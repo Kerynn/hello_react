@@ -58,10 +58,11 @@ export default function Customer(){
       setCustomer(data.customer);
       setChanged(false);
       console.log(data);
+      setError(undefined);
     })
     .catch((e) => {
       console.log('e', e);
-      setError(e); 
+      setError(e.message); 
     });
   }
 
@@ -128,13 +129,14 @@ export default function Customer(){
                   throw new Error('Something went wrong');
                 }
                 navigate('/customers');
-                }).catch((e) => {
+              }).catch((e) => {
                   console.log(e);
-                });
-              }}
+              });
+            }}
           >
             Delete
           </button>
+          {error ? <p>{error}</p> : null}
         </div> 
       ) : null }
       <br />
